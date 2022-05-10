@@ -1,0 +1,26 @@
+no_of_banana = int(input("Enter the no. of bananas: "))
+distance = int(input("Enter the distance: "))
+capacity = int(input("Enter the capacity of the camel: "))
+
+cost = 1
+i=1
+f=0
+present_distance = 0
+while (no_of_banana>capacity):
+  trip=2*(no_of_banana/capacity)-1
+  s = capacity/(trip/cost)
+  present_distance+=s
+  no_of_banana-=capacity
+  if present_distance>distance:
+    f=1
+    no_of_banana+=(present_distance-distance)*trip
+    break;
+
+distance_left = int(distance-present_distance)
+if cost*distance>no_of_banana:
+  print("No bananas can be carried to the destination.")
+else:
+  if f==1:
+    print("Bananas that can be carried: "+str(no_of_banana))
+  else:
+    print("Bananas that can be carried: " + str(no_of_banana-distance_left*cost))
